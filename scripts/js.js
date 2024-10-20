@@ -38,33 +38,33 @@ function cargar() {
     // Solicitar y validar la duración de la pista
     let duracionPista = validarNumero("Ingresar la duración de la pista en segundos (0-7200):", 0, 7200);
 
-    // Crear una instancia de Pista y agregarla al disco
+    // creo una instancia de Pista y agrego al disco
     let pista = new Pista(nombrePista, duracionPista);
     disco.agregarPista(pista);
 
-    // Preguntar si desea agregar otra pista
+    // Preguntar si quiere agregar otra pista
     agregarOtraPista = confirm("¿Desea agregar otra pista?");
   } while (agregarOtraPista);
 
   // Agregar el disco a la colección
   coleccionDiscos.push(disco);
 
-  // Mostrar mensaje de éxito
+  // Mostrar mensaje de que quedo cargado
   alert(`El disco "${disco.nombre}" fue agregado a la colección.`);
 }
 
-// Función para verificar si el código del disco ya existe
+// verifico si el cod ya esta cargado
 function codigoExistente(codigo) {
   return coleccionDiscos.some(disco => disco.codigo === codigo);
 }
 
 
 function mostrar() {
-  // Obtener el contenedor donde se mostrarán los discos
+  // traigo el contenedor donde se muestran los discos
   const contenedor = document.getElementById("albumContainer");
-  contenedor.innerHTML = ""; // Limpiar el contenido previo
+  contenedor.innerHTML = ""; // Limpio
 
-  // Verificar si hay discos cargados
+  // Verifico si hay cds cargados
   if (coleccionDiscos.length === 0) {
     contenedor.innerHTML = "<p>No hay discos cargados.</p>";
     return;
@@ -72,45 +72,45 @@ function mostrar() {
 
   // Recorremos la colección de discos
   for (let disco of coleccionDiscos) {
-    // Crear el contenedor principal del disco
+    // Creo el contenedor principal del disco
     let discoDiv = document.createElement("div");
     discoDiv.classList.add("album-card");
 
-    // Crear y agregar la imagen de portada
+    // Creo y agregor la imagen de portada
     let img = document.createElement("img");
-    img.src = disco.imagenPortada; // agrego la imagen que cargan
+    img.src = disco.imagenPortada; // agrego la imagen que cargan con la url
     img.alt = `Portada del Disco ${disco.nombre}`;
     img.classList.add("album-cover");
     discoDiv.appendChild(img);
 
-    // Crear el contenedor de información del disco
+    // creo el contenedor con la info del disco
     let infoDiv = document.createElement("div");
     infoDiv.classList.add("album-info");
 
-    // Añadir el nombre del disco
+    // agrego el nombre del disco
     let titulo = document.createElement("h2");
     titulo.textContent = disco.nombre;
     infoDiv.appendChild(titulo);
 
-    // Añadir el autor o banda
+    // agrego el autor
     let autor = document.createElement("p");
     autor.innerHTML = `<strong>Autor/Banda:</strong> ${disco.autor}`;
     infoDiv.appendChild(autor);
 
-    // Crear la lista de pistas
+    // creo la lista de pistas
     let listaPistas = document.createElement("ul");
 
-    // Variables para cálculos adicionales
+    // Variables para acumular la dur total
     let duracionTotalDisco = 0;
 
-    // Recorremos las pistas del disco
+    // recorro las pistas del disco
     for (let i = 0; i < disco.pistas.length; i++) {
       let pista = disco.pistas[i];
 
-      // Crear un elemento de lista para la pista
+      // creo un elemento de lista para la pista
       let pistaItem = document.createElement("li");
 
-      // Formatear la duración
+      //  la duración la pongo en mmss
       let duracionFormateada = pista.getDuracionFormateada();
 
 
@@ -136,10 +136,10 @@ function mostrar() {
     duracionTotalParrafo.innerHTML = `<strong>Duración total del disco:</strong> ${duracionTotalFormateada}`;
     infoDiv.appendChild(duracionTotalParrafo);
 
-    // Agregar la información al discoDiv
+    // agrego la información al discoDiv
     discoDiv.appendChild(infoDiv);
 
-    // Agregar el discoDiv al contenedor principal
+    // agrego el discoDiv al contenedor principal
     contenedor.appendChild(discoDiv);
     
   }

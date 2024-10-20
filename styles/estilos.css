@@ -86,11 +86,11 @@ body {
   }
   
 
-  /* Clase para destacar las pistas que duran más de 3 minutos */
+  /* destacar los temas que duran más de 3 min */
 .duracion-larga {
-  color: #d9534f; /* Cambia el color de la fuente a rojo o cualquier color que prefieras */
-  font-weight: bold; /* Hace la fuente más destacada */
-  background-color: #f8d7da; /* Cambia el color de fondo */
+  color: #d9534f;
+  font-weight: bold;
+  background-color: #f8d7da; 
   padding: 5px;
   border-radius: 5px;
 }

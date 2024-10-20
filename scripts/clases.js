@@ -5,7 +5,7 @@ class Pista {
       this.duracion = duracion; 
     }
   
-    // Método ppara duracion en mmyss
+    // met ppara duracion en mmyss
     getDuracionFormateada() {
       let minutos = Math.floor(this.duracion / 60);
       let segundos = this.duracion % 60;
